@@ -32,5 +32,30 @@ for i in range(len(matrix)):
                 count += 1
             if i - 3 >= 0 and j + 3 < len(matrix[i]) and matrix[i - 1][j + 1] == 'M' and matrix[i - 2][j + 2] == 'A' and matrix[i - 3][j + 3] == 'S':
                 count += 1
-
 print(count)
+
+#part 2
+
+count2 = 0
+flag = False
+
+# M S   M M     S M     S S
+#  A     A       A       A       ----> the patterns to find
+# M S   S S     S M     M M
+
+patterns = [["M","S","M","S"],
+            ["M","M","S","S"],
+            ["S","M","S","M"],
+            ["S","S","M","M"]
+            ]
+
+for y in range(1, len(matrix)-1):
+    for x in range(1,len(matrix[y])-1):
+        if matrix[y][x] != "A":
+            continue
+        corner_vals = [matrix[y-1][x-1], matrix[y-1][x+1], matrix[y+1][x-1], matrix[y+1][x+1]] # add all the corner values around "A" into a list 
+
+        if corner_vals in patterns: # check if the corner values match any of the patterns in the patterns list
+            count2 += 1
+print(count2)            
+
