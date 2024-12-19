@@ -22,5 +22,6 @@ def no_of_arrangements(pattern,start=0):
 # Part 1 answer
 print(sum(no_of_arrangements(pattern)>0 for pattern in patterns))
 
-
+# simple part 2 by mapping
+print(sum(map(no_of_arrangements,patterns)))
 
